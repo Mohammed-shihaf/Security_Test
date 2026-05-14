@@ -1,0 +1,1290 @@
+{
+  "created": 1778775750.5456727,
+  "duration": 1.0700879096984863,
+  "exitcode": 1,
+  "root": "D:\\Security_Test",
+  "environment": {},
+  "summary": {
+    "failed": 16,
+    "passed": 14,
+    "total": 30,
+    "collected": 30
+  },
+  "collectors": [
+    {
+      "nodeid": "",
+      "outcome": "passed",
+      "result": [
+        {
+          "nodeid": "tests",
+          "type": "Package"
+        }
+      ]
+    },
+    {
+      "nodeid": "tests/test_iac001_open_firewall_rules.py::TestOpenFirewallRuleDetection",
+      "outcome": "passed",
+      "result": [
+        {
+          "nodeid": "tests/test_iac001_open_firewall_rules.py::TestOpenFirewallRuleDetection::test_ssh_port_open_to_world_is_detected",
+          "type": "Function",
+          "lineno": 39
+        },
+        {
+          "nodeid": "tests/test_iac001_open_firewall_rules.py::TestOpenFirewallRuleDetection::test_violation_fixture_produces_failures",
+          "type": "Function",
+          "lineno": 53
+        },
+        {
+          "nodeid": "tests/test_iac001_open_firewall_rules.py::TestOpenFirewallRuleDetection::test_compliant_fixture_has_no_ssh_violation",
+          "type": "Function",
+          "lineno": 58
+        },
+        {
+          "nodeid": "tests/test_iac001_open_firewall_rules.py::TestOpenFirewallRuleDetection::test_iac001_score_for_violation_fixture",
+          "type": "Function",
+          "lineno": 71
+        },
+        {
+          "nodeid": "tests/test_iac001_open_firewall_rules.py::TestOpenFirewallRuleDetection::test_iac001_score_for_compliant_fixture",
+          "type": "Function",
+          "lineno": 88
+        },
+        {
+          "nodeid": "tests/test_iac001_open_firewall_rules.py::TestOpenFirewallRuleDetection::test_compliant_pass_rate_exceeds_violation",
+          "type": "Function",
+          "lineno": 101
+        }
+      ]
+    },
+    {
+      "nodeid": "tests/test_iac001_open_firewall_rules.py",
+      "outcome": "passed",
+      "result": [
+        {
+          "nodeid": "tests/test_iac001_open_firewall_rules.py::TestOpenFirewallRuleDetection",
+          "type": "Class"
+        }
+      ]
+    },
+    {
+      "nodeid": "tests/test_iac002_unencrypted_storage.py::TestUnencryptedStorageDetection",
+      "outcome": "passed",
+      "result": [
+        {
+          "nodeid": "tests/test_iac002_unencrypted_storage.py::TestUnencryptedStorageDetection::test_unencrypted_rds_is_detected",
+          "type": "Function",
+          "lineno": 39
+        },
+        {
+          "nodeid": "tests/test_iac002_unencrypted_storage.py::TestUnencryptedStorageDetection::test_violation_fixture_produces_failures",
+          "type": "Function",
+          "lineno": 53
+        },
+        {
+          "nodeid": "tests/test_iac002_unencrypted_storage.py::TestUnencryptedStorageDetection::test_compliant_s3_encryption_passes",
+          "type": "Function",
+          "lineno": 58
+        },
+        {
+          "nodeid": "tests/test_iac002_unencrypted_storage.py::TestUnencryptedStorageDetection::test_compliant_has_no_rds_encryption_violation",
+          "type": "Function",
+          "lineno": 71
+        },
+        {
+          "nodeid": "tests/test_iac002_unencrypted_storage.py::TestUnencryptedStorageDetection::test_iac002_score_for_violation_fixture",
+          "type": "Function",
+          "lineno": 80
+        },
+        {
+          "nodeid": "tests/test_iac002_unencrypted_storage.py::TestUnencryptedStorageDetection::test_iac002_score_for_compliant_fixture",
+          "type": "Function",
+          "lineno": 96
+        }
+      ]
+    },
+    {
+      "nodeid": "tests/test_iac002_unencrypted_storage.py",
+      "outcome": "passed",
+      "result": [
+        {
+          "nodeid": "tests/test_iac002_unencrypted_storage.py::TestUnencryptedStorageDetection",
+          "type": "Class"
+        }
+      ]
+    },
+    {
+      "nodeid": "tests/test_iac003_public_storage_access.py::TestPublicStorageAccessDetection",
+      "outcome": "passed",
+      "result": [
+        {
+          "nodeid": "tests/test_iac003_public_storage_access.py::TestPublicStorageAccessDetection::test_public_access_block_disabled_is_detected",
+          "type": "Function",
+          "lineno": 47
+        },
+        {
+          "nodeid": "tests/test_iac003_public_storage_access.py::TestPublicStorageAccessDetection::test_all_four_public_access_block_flags_detected",
+          "type": "Function",
+          "lineno": 62
+        },
+        {
+          "nodeid": "tests/test_iac003_public_storage_access.py::TestPublicStorageAccessDetection::test_violation_fixture_produces_failures",
+          "type": "Function",
+          "lineno": 77
+        },
+        {
+          "nodeid": "tests/test_iac003_public_storage_access.py::TestPublicStorageAccessDetection::test_compliant_public_access_is_blocked",
+          "type": "Function",
+          "lineno": 82
+        },
+        {
+          "nodeid": "tests/test_iac003_public_storage_access.py::TestPublicStorageAccessDetection::test_iac003_score_for_violation_fixture",
+          "type": "Function",
+          "lineno": 99
+        },
+        {
+          "nodeid": "tests/test_iac003_public_storage_access.py::TestPublicStorageAccessDetection::test_iac003_score_for_compliant_fixture",
+          "type": "Function",
+          "lineno": 115
+        },
+        {
+          "nodeid": "tests/test_iac003_public_storage_access.py::TestPublicStorageAccessDetection::test_violation_has_more_public_failures_than_compliant",
+          "type": "Function",
+          "lineno": 127
+        }
+      ]
+    },
+    {
+      "nodeid": "tests/test_iac003_public_storage_access.py",
+      "outcome": "passed",
+      "result": [
+        {
+          "nodeid": "tests/test_iac003_public_storage_access.py::TestPublicStorageAccessDetection",
+          "type": "Class"
+        }
+      ]
+    },
+    {
+      "nodeid": "tests/test_iac004_cis_benchmark.py::TestCISBenchmarkViolationFixtures",
+      "outcome": "passed",
+      "result": [
+        {
+          "nodeid": "tests/test_iac004_cis_benchmark.py::TestCISBenchmarkViolationFixtures::test_open_ssh_violates_cis_4_2",
+          "type": "Function",
+          "lineno": 66
+        },
+        {
+          "nodeid": "tests/test_iac004_cis_benchmark.py::TestCISBenchmarkViolationFixtures::test_unencrypted_rds_violates_cis",
+          "type": "Function",
+          "lineno": 74
+        },
+        {
+          "nodeid": "tests/test_iac004_cis_benchmark.py::TestCISBenchmarkViolationFixtures::test_public_s3_violates_cis",
+          "type": "Function",
+          "lineno": 82
+        },
+        {
+          "nodeid": "tests/test_iac004_cis_benchmark.py::TestCISBenchmarkViolationFixtures::test_violations_dir_cis_score",
+          "type": "Function",
+          "lineno": 91
+        }
+      ]
+    },
+    {
+      "nodeid": "tests/test_iac004_cis_benchmark.py::TestCISBenchmarkCompliantFixtures",
+      "outcome": "passed",
+      "result": [
+        {
+          "nodeid": "tests/test_iac004_cis_benchmark.py::TestCISBenchmarkCompliantFixtures::test_compliant_no_ssh_violation",
+          "type": "Function",
+          "lineno": 108
+        },
+        {
+          "nodeid": "tests/test_iac004_cis_benchmark.py::TestCISBenchmarkCompliantFixtures::test_compliant_s3_encryption_passes_cis",
+          "type": "Function",
+          "lineno": 115
+        },
+        {
+          "nodeid": "tests/test_iac004_cis_benchmark.py::TestCISBenchmarkCompliantFixtures::test_compliant_s3_public_access_blocked",
+          "type": "Function",
+          "lineno": 122
+        },
+        {
+          "nodeid": "tests/test_iac004_cis_benchmark.py::TestCISBenchmarkCompliantFixtures::test_compliant_dir_higher_cis_score_than_violations",
+          "type": "Function",
+          "lineno": 131
+        },
+        {
+          "nodeid": "tests/test_iac004_cis_benchmark.py::TestCISBenchmarkCompliantFixtures::test_compliant_dir_cis_score_report",
+          "type": "Function",
+          "lineno": 150
+        }
+      ]
+    },
+    {
+      "nodeid": "tests/test_iac004_cis_benchmark.py::TestCISBenchmarkSummary",
+      "outcome": "passed",
+      "result": [
+        {
+          "nodeid": "tests/test_iac004_cis_benchmark.py::TestCISBenchmarkSummary::test_spot_check_coverage",
+          "type": "Function",
+          "lineno": 169
+        },
+        {
+          "nodeid": "tests/test_iac004_cis_benchmark.py::TestCISBenchmarkSummary::test_full_iac_cis_report",
+          "type": "Function",
+          "lineno": 187
+        }
+      ]
+    },
+    {
+      "nodeid": "tests/test_iac004_cis_benchmark.py",
+      "outcome": "passed",
+      "result": [
+        {
+          "nodeid": "tests/test_iac004_cis_benchmark.py::TestCISBenchmarkViolationFixtures",
+          "type": "Class"
+        },
+        {
+          "nodeid": "tests/test_iac004_cis_benchmark.py::TestCISBenchmarkCompliantFixtures",
+          "type": "Class"
+        },
+        {
+          "nodeid": "tests/test_iac004_cis_benchmark.py::TestCISBenchmarkSummary",
+          "type": "Class"
+        }
+      ]
+    },
+    {
+      "nodeid": "tests",
+      "outcome": "passed",
+      "result": [
+        {
+          "nodeid": "tests/test_iac001_open_firewall_rules.py",
+          "type": "Module"
+        },
+        {
+          "nodeid": "tests/test_iac002_unencrypted_storage.py",
+          "type": "Module"
+        },
+        {
+          "nodeid": "tests/test_iac003_public_storage_access.py",
+          "type": "Module"
+        },
+        {
+          "nodeid": "tests/test_iac004_cis_benchmark.py",
+          "type": "Module"
+        }
+      ]
+    }
+  ],
+  "tests": [
+    {
+      "nodeid": "tests/test_iac001_open_firewall_rules.py::TestOpenFirewallRuleDetection::test_ssh_port_open_to_world_is_detected",
+      "lineno": 39,
+      "outcome": "failed",
+      "keywords": [
+        "test_ssh_port_open_to_world_is_detected",
+        "TestOpenFirewallRuleDetection",
+        "test_iac001_open_firewall_rules.py",
+        "iac001",
+        "tests",
+        "Security_Test",
+        ""
+      ],
+      "setup": {
+        "duration": 0.09172030002810061,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.001506200002040714,
+        "outcome": "failed",
+        "crash": {
+          "path": "D:\\Security_Test\\tests\\test_iac001_open_firewall_rules.py",
+          "lineno": 49,
+          "message": "AssertionError: CKV_AWS_25 not found in failed checks \u2014 scanner may not have fired.\n  Failed: []\nassert 'CKV_AWS_25' in set()"
+        },
+        "traceback": [
+          {
+            "path": "tests\\test_iac001_open_firewall_rules.py",
+            "lineno": 49,
+            "message": "in test_ssh_port_open_to_world_is_detected"
+          }
+        ],
+        "stdout": "\nFailed checks on open_security_group.tf:\n",
+        "longrepr": "tests\\test_iac001_open_firewall_rules.py:49: in test_ssh_port_open_to_world_is_detected\n    assert SSH_CHECK in fails, (\nE   AssertionError: CKV_AWS_25 not found in failed checks \u2014 scanner may not have fired.\nE     Failed: []\nE   assert 'CKV_AWS_25' in set()"
+      },
+      "teardown": {
+        "duration": 0.001127899973653257,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_iac001_open_firewall_rules.py::TestOpenFirewallRuleDetection::test_violation_fixture_produces_failures",
+      "lineno": 53,
+      "outcome": "failed",
+      "keywords": [
+        "test_violation_fixture_produces_failures",
+        "TestOpenFirewallRuleDetection",
+        "test_iac001_open_firewall_rules.py",
+        "iac001",
+        "tests",
+        "Security_Test",
+        ""
+      ],
+      "setup": {
+        "duration": 0.0007918000337667763,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.0005380000220611691,
+        "outcome": "failed",
+        "crash": {
+          "path": "D:\\Security_Test\\tests\\test_iac001_open_firewall_rules.py",
+          "lineno": 57,
+          "message": "AssertionError: Checkov found zero violations \u2014 scanner may not be working\nassert set()"
+        },
+        "traceback": [
+          {
+            "path": "tests\\test_iac001_open_firewall_rules.py",
+            "lineno": 57,
+            "message": "in test_violation_fixture_produces_failures"
+          }
+        ],
+        "longrepr": "tests\\test_iac001_open_firewall_rules.py:57: in test_violation_fixture_produces_failures\n    assert fails, \"Checkov found zero violations \u2014 scanner may not be working\"\nE   AssertionError: Checkov found zero violations \u2014 scanner may not be working\nE   assert set()"
+      },
+      "teardown": {
+        "duration": 0.0007959000067785382,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_iac001_open_firewall_rules.py::TestOpenFirewallRuleDetection::test_compliant_fixture_has_no_ssh_violation",
+      "lineno": 58,
+      "outcome": "passed",
+      "keywords": [
+        "test_compliant_fixture_has_no_ssh_violation",
+        "TestOpenFirewallRuleDetection",
+        "test_iac001_open_firewall_rules.py",
+        "iac001",
+        "tests",
+        "Security_Test",
+        ""
+      ],
+      "setup": {
+        "duration": 0.10045179998269305,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.0009186999523080885,
+        "outcome": "passed",
+        "stdout": "\nOpen-firewall checks in compliant dir: none\n"
+      },
+      "teardown": {
+        "duration": 0.0004640999832190573,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_iac001_open_firewall_rules.py::TestOpenFirewallRuleDetection::test_iac001_score_for_violation_fixture",
+      "lineno": 71,
+      "outcome": "failed",
+      "keywords": [
+        "test_iac001_score_for_violation_fixture",
+        "TestOpenFirewallRuleDetection",
+        "test_iac001_open_firewall_rules.py",
+        "iac001",
+        "tests",
+        "Security_Test",
+        ""
+      ],
+      "setup": {
+        "duration": 0.00042560003930702806,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.0009015999967232347,
+        "outcome": "failed",
+        "crash": {
+          "path": "D:\\Security_Test\\tests\\test_iac001_open_firewall_rules.py",
+          "lineno": 84,
+          "message": "AssertionError: Score should be <100 when open firewall rules are present\nassert 100.0 < 100"
+        },
+        "traceback": [
+          {
+            "path": "tests\\test_iac001_open_firewall_rules.py",
+            "lineno": 84,
+            "message": "in test_iac001_score_for_violation_fixture"
+          }
+        ],
+        "stdout": "\nIAC-001 score (violation fixture): {'metric': 'IAC-001 Open Firewall Rule Count', 'raw': {'Open_Ports': 0, 'Wildcard_CIDRs': 0, 'Firewall_Risk': 0}, 'normalized_0_100': 100.0}\n",
+        "longrepr": "tests\\test_iac001_open_firewall_rules.py:84: in test_iac001_score_for_violation_fixture\n    assert result[\"normalized_0_100\"] < 100, (\nE   AssertionError: Score should be <100 when open firewall rules are present\nE   assert 100.0 < 100"
+      },
+      "teardown": {
+        "duration": 0.0005623999750241637,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_iac001_open_firewall_rules.py::TestOpenFirewallRuleDetection::test_iac001_score_for_compliant_fixture",
+      "lineno": 88,
+      "outcome": "passed",
+      "keywords": [
+        "test_iac001_score_for_compliant_fixture",
+        "TestOpenFirewallRuleDetection",
+        "test_iac001_open_firewall_rules.py",
+        "iac001",
+        "tests",
+        "Security_Test",
+        ""
+      ],
+      "setup": {
+        "duration": 0.0008004000410437584,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.0007643999997526407,
+        "outcome": "passed",
+        "stdout": "\nIAC-001 score (compliant fixture): {'metric': 'IAC-001 Open Firewall Rule Count', 'raw': {'Open_Ports': 0, 'Wildcard_CIDRs': 0, 'Firewall_Risk': 0}, 'normalized_0_100': 100.0}\n"
+      },
+      "teardown": {
+        "duration": 0.000374099996406585,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_iac001_open_firewall_rules.py::TestOpenFirewallRuleDetection::test_compliant_pass_rate_exceeds_violation",
+      "lineno": 101,
+      "outcome": "passed",
+      "keywords": [
+        "test_compliant_pass_rate_exceeds_violation",
+        "TestOpenFirewallRuleDetection",
+        "test_iac001_open_firewall_rules.py",
+        "iac001",
+        "tests",
+        "Security_Test",
+        ""
+      ],
+      "setup": {
+        "duration": 0.0004273999948054552,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.0006622999790124595,
+        "outcome": "passed",
+        "stdout": "\nPass rate \u2014 violation fixture: 0.0%  compliant fixture: 0.0%\n"
+      },
+      "teardown": {
+        "duration": 0.0003572999848984182,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_iac002_unencrypted_storage.py::TestUnencryptedStorageDetection::test_unencrypted_rds_is_detected",
+      "lineno": 39,
+      "outcome": "failed",
+      "keywords": [
+        "test_unencrypted_rds_is_detected",
+        "TestUnencryptedStorageDetection",
+        "test_iac002_unencrypted_storage.py",
+        "iac002",
+        "tests",
+        "Security_Test",
+        ""
+      ],
+      "setup": {
+        "duration": 0.08904229995096102,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.0008328999974764884,
+        "outcome": "failed",
+        "crash": {
+          "path": "D:\\Security_Test\\tests\\test_iac002_unencrypted_storage.py",
+          "lineno": 49,
+          "message": "AssertionError: CKV_AWS_17 not in failed checks \u2014 unencrypted RDS not flagged.\n  Failed: []\nassert 'CKV_AWS_17' in set()"
+        },
+        "traceback": [
+          {
+            "path": "tests\\test_iac002_unencrypted_storage.py",
+            "lineno": 49,
+            "message": "in test_unencrypted_rds_is_detected"
+          }
+        ],
+        "stdout": "\nFailed checks on unencrypted_rds.tf:\n",
+        "longrepr": "tests\\test_iac002_unencrypted_storage.py:49: in test_unencrypted_rds_is_detected\n    assert RDS_ENCRYPTED_CHECK in fails, (\nE   AssertionError: CKV_AWS_17 not in failed checks \u2014 unencrypted RDS not flagged.\nE     Failed: []\nE   assert 'CKV_AWS_17' in set()"
+      },
+      "teardown": {
+        "duration": 0.0005132000078447163,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_iac002_unencrypted_storage.py::TestUnencryptedStorageDetection::test_violation_fixture_produces_failures",
+      "lineno": 53,
+      "outcome": "failed",
+      "keywords": [
+        "test_violation_fixture_produces_failures",
+        "TestUnencryptedStorageDetection",
+        "test_iac002_unencrypted_storage.py",
+        "iac002",
+        "tests",
+        "Security_Test",
+        ""
+      ],
+      "setup": {
+        "duration": 0.0006804000004194677,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.0006818000110797584,
+        "outcome": "failed",
+        "crash": {
+          "path": "D:\\Security_Test\\tests\\test_iac002_unencrypted_storage.py",
+          "lineno": 57,
+          "message": "AssertionError: Checkov found zero violations on unencrypted_rds.tf\nassert set()"
+        },
+        "traceback": [
+          {
+            "path": "tests\\test_iac002_unencrypted_storage.py",
+            "lineno": 57,
+            "message": "in test_violation_fixture_produces_failures"
+          }
+        ],
+        "longrepr": "tests\\test_iac002_unencrypted_storage.py:57: in test_violation_fixture_produces_failures\n    assert fails, \"Checkov found zero violations on unencrypted_rds.tf\"\nE   AssertionError: Checkov found zero violations on unencrypted_rds.tf\nE   assert set()"
+      },
+      "teardown": {
+        "duration": 0.00046499999007210135,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_iac002_unencrypted_storage.py::TestUnencryptedStorageDetection::test_compliant_s3_encryption_passes",
+      "lineno": 58,
+      "outcome": "passed",
+      "keywords": [
+        "test_compliant_s3_encryption_passes",
+        "TestUnencryptedStorageDetection",
+        "test_iac002_unencrypted_storage.py",
+        "iac002",
+        "tests",
+        "Security_Test",
+        ""
+      ],
+      "setup": {
+        "duration": 0.00043290003668516874,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.0007473999867215753,
+        "outcome": "passed",
+        "stdout": "\nS3 encryption check in compliant dir: PASS\n"
+      },
+      "teardown": {
+        "duration": 0.00038379995385184884,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_iac002_unencrypted_storage.py::TestUnencryptedStorageDetection::test_compliant_has_no_rds_encryption_violation",
+      "lineno": 71,
+      "outcome": "passed",
+      "keywords": [
+        "test_compliant_has_no_rds_encryption_violation",
+        "TestUnencryptedStorageDetection",
+        "test_iac002_unencrypted_storage.py",
+        "iac002",
+        "tests",
+        "Security_Test",
+        ""
+      ],
+      "setup": {
+        "duration": 0.0003848000196740031,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.0005177999846637249,
+        "outcome": "passed"
+      },
+      "teardown": {
+        "duration": 0.0005808999994769692,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_iac002_unencrypted_storage.py::TestUnencryptedStorageDetection::test_iac002_score_for_violation_fixture",
+      "lineno": 80,
+      "outcome": "failed",
+      "keywords": [
+        "test_iac002_score_for_violation_fixture",
+        "TestUnencryptedStorageDetection",
+        "test_iac002_unencrypted_storage.py",
+        "iac002",
+        "tests",
+        "Security_Test",
+        ""
+      ],
+      "setup": {
+        "duration": 0.0004833000130020082,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.0009098000009544194,
+        "outcome": "failed",
+        "crash": {
+          "path": "D:\\Security_Test\\tests\\test_iac002_unencrypted_storage.py",
+          "lineno": 92,
+          "message": "AssertionError: Score should be <100 when unencrypted resources are detected\nassert 100.0 < 100"
+        },
+        "traceback": [
+          {
+            "path": "tests\\test_iac002_unencrypted_storage.py",
+            "lineno": 92,
+            "message": "in test_iac002_score_for_violation_fixture"
+          }
+        ],
+        "stdout": "\nIAC-002 score (violation fixture): {'metric': 'IAC-002 Unencrypted Storage Count', 'raw': {'Unencrypted_Resources': 0, 'Encryption_Deficit_Score': 0}, 'normalized_0_100': 100.0}\n",
+        "longrepr": "tests\\test_iac002_unencrypted_storage.py:92: in test_iac002_score_for_violation_fixture\n    assert result[\"normalized_0_100\"] < 100, (\nE   AssertionError: Score should be <100 when unencrypted resources are detected\nE   assert 100.0 < 100"
+      },
+      "teardown": {
+        "duration": 0.0006774000357836485,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_iac002_unencrypted_storage.py::TestUnencryptedStorageDetection::test_iac002_score_for_compliant_fixture",
+      "lineno": 96,
+      "outcome": "passed",
+      "keywords": [
+        "test_iac002_score_for_compliant_fixture",
+        "TestUnencryptedStorageDetection",
+        "test_iac002_unencrypted_storage.py",
+        "iac002",
+        "tests",
+        "Security_Test",
+        ""
+      ],
+      "setup": {
+        "duration": 0.0005510000046342611,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.0007811000104993582,
+        "outcome": "passed",
+        "stdout": "\nIAC-002 score (compliant fixture): {'metric': 'IAC-002 Unencrypted Storage Count', 'raw': {'Unencrypted_Resources': 0, 'Encryption_Deficit_Score': 0}, 'normalized_0_100': 100.0}\n"
+      },
+      "teardown": {
+        "duration": 0.0004599000094458461,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_iac003_public_storage_access.py::TestPublicStorageAccessDetection::test_public_access_block_disabled_is_detected",
+      "lineno": 47,
+      "outcome": "failed",
+      "keywords": [
+        "test_public_access_block_disabled_is_detected",
+        "TestPublicStorageAccessDetection",
+        "test_iac003_public_storage_access.py",
+        "iac003",
+        "tests",
+        "Security_Test",
+        ""
+      ],
+      "setup": {
+        "duration": 0.09146219998365268,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.0007719999994151294,
+        "outcome": "failed",
+        "crash": {
+          "path": "D:\\Security_Test\\tests\\test_iac003_public_storage_access.py",
+          "lineno": 58,
+          "message": "AssertionError: None of {'CKV_AWS_53', 'CKV_AWS_55', 'CKV_AWS_54', 'CKV_AWS_56'} found in failed checks.\n  Failed: []\nassert set()"
+        },
+        "traceback": [
+          {
+            "path": "tests\\test_iac003_public_storage_access.py",
+            "lineno": 58,
+            "message": "in test_public_access_block_disabled_is_detected"
+          }
+        ],
+        "stdout": "\nFailed checks on public_s3.tf:\n",
+        "longrepr": "tests\\test_iac003_public_storage_access.py:58: in test_public_access_block_disabled_is_detected\n    assert triggered, (\nE   AssertionError: None of {'CKV_AWS_53', 'CKV_AWS_55', 'CKV_AWS_54', 'CKV_AWS_56'} found in failed checks.\nE     Failed: []\nE   assert set()"
+      },
+      "teardown": {
+        "duration": 0.0006254999898374081,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_iac003_public_storage_access.py::TestPublicStorageAccessDetection::test_all_four_public_access_block_flags_detected",
+      "lineno": 62,
+      "outcome": "failed",
+      "keywords": [
+        "test_all_four_public_access_block_flags_detected",
+        "TestPublicStorageAccessDetection",
+        "test_iac003_public_storage_access.py",
+        "iac003",
+        "tests",
+        "Security_Test",
+        ""
+      ],
+      "setup": {
+        "duration": 0.0005927000311203301,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.0008576000109314919,
+        "outcome": "failed",
+        "crash": {
+          "path": "D:\\Security_Test\\tests\\test_iac003_public_storage_access.py",
+          "lineno": 73,
+          "message": "AssertionError: Expected all four public-block checks to fail; missing violations for: {'CKV_AWS_53', 'CKV_AWS_55', 'CKV_AWS_54', 'CKV_AWS_56'}\nassert not {'CKV_AWS_53', 'CKV_AWS_55', 'CKV_AWS_54', 'CKV_AWS_56'}"
+        },
+        "traceback": [
+          {
+            "path": "tests\\test_iac003_public_storage_access.py",
+            "lineno": 73,
+            "message": "in test_all_four_public_access_block_flags_detected"
+          }
+        ],
+        "stdout": "\nPublic-block checks triggered: set()\nPublic-block checks NOT triggered: {'CKV_AWS_53', 'CKV_AWS_55', 'CKV_AWS_54', 'CKV_AWS_56'}\n",
+        "longrepr": "tests\\test_iac003_public_storage_access.py:73: in test_all_four_public_access_block_flags_detected\n    assert not missing, (\nE   AssertionError: Expected all four public-block checks to fail; missing violations for: {'CKV_AWS_53', 'CKV_AWS_55', 'CKV_AWS_54', 'CKV_AWS_56'}\nE   assert not {'CKV_AWS_53', 'CKV_AWS_55', 'CKV_AWS_54', 'CKV_AWS_56'}"
+      },
+      "teardown": {
+        "duration": 0.0006373000214807689,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_iac003_public_storage_access.py::TestPublicStorageAccessDetection::test_violation_fixture_produces_failures",
+      "lineno": 77,
+      "outcome": "failed",
+      "keywords": [
+        "test_violation_fixture_produces_failures",
+        "TestPublicStorageAccessDetection",
+        "test_iac003_public_storage_access.py",
+        "iac003",
+        "tests",
+        "Security_Test",
+        ""
+      ],
+      "setup": {
+        "duration": 0.0008348000119440258,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.0005736000020988286,
+        "outcome": "failed",
+        "crash": {
+          "path": "D:\\Security_Test\\tests\\test_iac003_public_storage_access.py",
+          "lineno": 81,
+          "message": "AssertionError: Checkov found zero violations on public_s3.tf\nassert set()"
+        },
+        "traceback": [
+          {
+            "path": "tests\\test_iac003_public_storage_access.py",
+            "lineno": 81,
+            "message": "in test_violation_fixture_produces_failures"
+          }
+        ],
+        "longrepr": "tests\\test_iac003_public_storage_access.py:81: in test_violation_fixture_produces_failures\n    assert fails, \"Checkov found zero violations on public_s3.tf\"\nE   AssertionError: Checkov found zero violations on public_s3.tf\nE   assert set()"
+      },
+      "teardown": {
+        "duration": 0.0004810999962501228,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_iac003_public_storage_access.py::TestPublicStorageAccessDetection::test_compliant_public_access_is_blocked",
+      "lineno": 82,
+      "outcome": "passed",
+      "keywords": [
+        "test_compliant_public_access_is_blocked",
+        "TestPublicStorageAccessDetection",
+        "test_iac003_public_storage_access.py",
+        "iac003",
+        "tests",
+        "Security_Test",
+        ""
+      ],
+      "setup": {
+        "duration": 0.0005262999911792576,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.000706799968611449,
+        "outcome": "passed",
+        "stdout": "\nPublic-access block violations in compliant dir: none\n"
+      },
+      "teardown": {
+        "duration": 0.00046850001672282815,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_iac003_public_storage_access.py::TestPublicStorageAccessDetection::test_iac003_score_for_violation_fixture",
+      "lineno": 99,
+      "outcome": "failed",
+      "keywords": [
+        "test_iac003_score_for_violation_fixture",
+        "TestPublicStorageAccessDetection",
+        "test_iac003_public_storage_access.py",
+        "iac003",
+        "tests",
+        "Security_Test",
+        ""
+      ],
+      "setup": {
+        "duration": 0.0008984999731183052,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.0011481000110507011,
+        "outcome": "failed",
+        "crash": {
+          "path": "D:\\Security_Test\\tests\\test_iac003_public_storage_access.py",
+          "lineno": 111,
+          "message": "AssertionError: Score should be <100 when publicly accessible buckets are present\nassert 100.0 < 100"
+        },
+        "traceback": [
+          {
+            "path": "tests\\test_iac003_public_storage_access.py",
+            "lineno": 111,
+            "message": "in test_iac003_score_for_violation_fixture"
+          }
+        ],
+        "stdout": "\nIAC-003 score (violation fixture): {'metric': 'IAC-003 Public Storage Bucket Count', 'raw': {'Public_Buckets': 0, 'Public_Exposure_Score': 0}, 'normalized_0_100': 100.0}\n",
+        "longrepr": "tests\\test_iac003_public_storage_access.py:111: in test_iac003_score_for_violation_fixture\n    assert result[\"normalized_0_100\"] < 100, (\nE   AssertionError: Score should be <100 when publicly accessible buckets are present\nE   assert 100.0 < 100"
+      },
+      "teardown": {
+        "duration": 0.0006977000157348812,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_iac003_public_storage_access.py::TestPublicStorageAccessDetection::test_iac003_score_for_compliant_fixture",
+      "lineno": 115,
+      "outcome": "passed",
+      "keywords": [
+        "test_iac003_score_for_compliant_fixture",
+        "TestPublicStorageAccessDetection",
+        "test_iac003_public_storage_access.py",
+        "iac003",
+        "tests",
+        "Security_Test",
+        ""
+      ],
+      "setup": {
+        "duration": 0.0012110000243410468,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.0008583999588154256,
+        "outcome": "passed",
+        "stdout": "\nIAC-003 score (compliant fixture): {'metric': 'IAC-003 Public Storage Bucket Count', 'raw': {'Public_Buckets': 0, 'Public_Exposure_Score': 0}, 'normalized_0_100': 100.0}\n"
+      },
+      "teardown": {
+        "duration": 0.0005563999875448644,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_iac003_public_storage_access.py::TestPublicStorageAccessDetection::test_violation_has_more_public_failures_than_compliant",
+      "lineno": 127,
+      "outcome": "failed",
+      "keywords": [
+        "test_violation_has_more_public_failures_than_compliant",
+        "TestPublicStorageAccessDetection",
+        "test_iac003_public_storage_access.py",
+        "iac003",
+        "tests",
+        "Security_Test",
+        ""
+      ],
+      "setup": {
+        "duration": 0.0004988000146113336,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.001704900001641363,
+        "outcome": "failed",
+        "crash": {
+          "path": "D:\\Security_Test\\tests\\test_iac003_public_storage_access.py",
+          "lineno": 138,
+          "message": "AssertionError: Violation fixture should have more public-access failures than compliant\nassert 0 > 0\n +  where 0 = len(set())\n +  and   0 = len(set())"
+        },
+        "traceback": [
+          {
+            "path": "tests\\test_iac003_public_storage_access.py",
+            "lineno": 138,
+            "message": "in test_violation_has_more_public_failures_than_compliant"
+          }
+        ],
+        "stdout": "\nPublic-access failures \u2014 violation: 0, compliant: 0\n",
+        "longrepr": "tests\\test_iac003_public_storage_access.py:138: in test_violation_has_more_public_failures_than_compliant\n    assert len(viol_fails) > len(comp_fails), (\nE   AssertionError: Violation fixture should have more public-access failures than compliant\nE   assert 0 > 0\nE    +  where 0 = len(set())\nE    +  and   0 = len(set())"
+      },
+      "teardown": {
+        "duration": 0.0006893000099807978,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_iac004_cis_benchmark.py::TestCISBenchmarkViolationFixtures::test_open_ssh_violates_cis_4_2",
+      "lineno": 66,
+      "outcome": "failed",
+      "keywords": [
+        "test_open_ssh_violates_cis_4_2",
+        "TestCISBenchmarkViolationFixtures",
+        "test_iac004_cis_benchmark.py",
+        "iac004",
+        "tests",
+        "Security_Test",
+        ""
+      ],
+      "setup": {
+        "duration": 0.09329190000426024,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.0006840000278316438,
+        "outcome": "failed",
+        "crash": {
+          "path": "D:\\Security_Test\\tests\\test_iac004_cis_benchmark.py",
+          "lineno": 70,
+          "message": "AssertionError: CIS 4.2 check CKV_AWS_25 not triggered on violation fixtures.\n  Failed: []\nassert 'CKV_AWS_25' in set()"
+        },
+        "traceback": [
+          {
+            "path": "tests\\test_iac004_cis_benchmark.py",
+            "lineno": 70,
+            "message": "in test_open_ssh_violates_cis_4_2"
+          }
+        ],
+        "longrepr": "tests\\test_iac004_cis_benchmark.py:70: in test_open_ssh_violates_cis_4_2\n    assert CIS_SSH_CHECK in fails, (\nE   AssertionError: CIS 4.2 check CKV_AWS_25 not triggered on violation fixtures.\nE     Failed: []\nE   assert 'CKV_AWS_25' in set()"
+      },
+      "teardown": {
+        "duration": 0.0006355000077746809,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_iac004_cis_benchmark.py::TestCISBenchmarkViolationFixtures::test_unencrypted_rds_violates_cis",
+      "lineno": 74,
+      "outcome": "failed",
+      "keywords": [
+        "test_unencrypted_rds_violates_cis",
+        "TestCISBenchmarkViolationFixtures",
+        "test_iac004_cis_benchmark.py",
+        "iac004",
+        "tests",
+        "Security_Test",
+        ""
+      ],
+      "setup": {
+        "duration": 0.000735800014808774,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.0007026999955996871,
+        "outcome": "failed",
+        "crash": {
+          "path": "D:\\Security_Test\\tests\\test_iac004_cis_benchmark.py",
+          "lineno": 78,
+          "message": "AssertionError: CIS RDS encryption check CKV_AWS_17 not triggered.\n  Failed: []\nassert 'CKV_AWS_17' in set()"
+        },
+        "traceback": [
+          {
+            "path": "tests\\test_iac004_cis_benchmark.py",
+            "lineno": 78,
+            "message": "in test_unencrypted_rds_violates_cis"
+          }
+        ],
+        "longrepr": "tests\\test_iac004_cis_benchmark.py:78: in test_unencrypted_rds_violates_cis\n    assert CIS_RDS_ENCRYPTION in fails, (\nE   AssertionError: CIS RDS encryption check CKV_AWS_17 not triggered.\nE     Failed: []\nE   assert 'CKV_AWS_17' in set()"
+      },
+      "teardown": {
+        "duration": 0.0006190999993123114,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_iac004_cis_benchmark.py::TestCISBenchmarkViolationFixtures::test_public_s3_violates_cis",
+      "lineno": 82,
+      "outcome": "failed",
+      "keywords": [
+        "test_public_s3_violates_cis",
+        "TestCISBenchmarkViolationFixtures",
+        "test_iac004_cis_benchmark.py",
+        "iac004",
+        "tests",
+        "Security_Test",
+        ""
+      ],
+      "setup": {
+        "duration": 0.00048719998449087143,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.0007239999831654131,
+        "outcome": "failed",
+        "crash": {
+          "path": "D:\\Security_Test\\tests\\test_iac004_cis_benchmark.py",
+          "lineno": 87,
+          "message": "AssertionError: No CIS S3 public-access block checks triggered.\n  Expected any of {'CKV_AWS_53', 'CKV_AWS_55', 'CKV_AWS_54', 'CKV_AWS_56'}\n  Failed: []\nassert set()"
+        },
+        "traceback": [
+          {
+            "path": "tests\\test_iac004_cis_benchmark.py",
+            "lineno": 87,
+            "message": "in test_public_s3_violates_cis"
+          }
+        ],
+        "longrepr": "tests\\test_iac004_cis_benchmark.py:87: in test_public_s3_violates_cis\n    assert triggered, (\nE   AssertionError: No CIS S3 public-access block checks triggered.\nE     Expected any of {'CKV_AWS_53', 'CKV_AWS_55', 'CKV_AWS_54', 'CKV_AWS_56'}\nE     Failed: []\nE   assert set()"
+      },
+      "teardown": {
+        "duration": 0.0006688000285066664,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_iac004_cis_benchmark.py::TestCISBenchmarkViolationFixtures::test_violations_dir_cis_score",
+      "lineno": 91,
+      "outcome": "passed",
+      "keywords": [
+        "test_violations_dir_cis_score",
+        "TestCISBenchmarkViolationFixtures",
+        "test_iac004_cis_benchmark.py",
+        "iac004",
+        "tests",
+        "Security_Test",
+        ""
+      ],
+      "setup": {
+        "duration": 0.0011236999998800457,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.0008753999718464911,
+        "outcome": "passed",
+        "stdout": "\nViolations dir \u2014 passed: 0/0  (0.0%)\nIAC-004 score (violations): {'metric': 'IAC-004 CIS Benchmark Compliance', 'raw': {'Passing': 0, 'Total': 1, 'CIS_Compliance_Pct': 0.0}, 'normalized_0_100': 0.0, 'gate_percent': 95.0, 'pass_gate': False}\n"
+      },
+      "teardown": {
+        "duration": 0.0012573999701999128,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_iac004_cis_benchmark.py::TestCISBenchmarkCompliantFixtures::test_compliant_no_ssh_violation",
+      "lineno": 108,
+      "outcome": "passed",
+      "keywords": [
+        "test_compliant_no_ssh_violation",
+        "TestCISBenchmarkCompliantFixtures",
+        "test_iac004_cis_benchmark.py",
+        "iac004",
+        "tests",
+        "Security_Test",
+        ""
+      ],
+      "setup": {
+        "duration": 0.0018057000124827027,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.0006369000184349716,
+        "outcome": "passed"
+      },
+      "teardown": {
+        "duration": 0.0005889000021852553,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_iac004_cis_benchmark.py::TestCISBenchmarkCompliantFixtures::test_compliant_s3_encryption_passes_cis",
+      "lineno": 115,
+      "outcome": "passed",
+      "keywords": [
+        "test_compliant_s3_encryption_passes_cis",
+        "TestCISBenchmarkCompliantFixtures",
+        "test_iac004_cis_benchmark.py",
+        "iac004",
+        "tests",
+        "Security_Test",
+        ""
+      ],
+      "setup": {
+        "duration": 0.0010668999748304486,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.0004064000095240772,
+        "outcome": "passed"
+      },
+      "teardown": {
+        "duration": 0.0005637999856844544,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_iac004_cis_benchmark.py::TestCISBenchmarkCompliantFixtures::test_compliant_s3_public_access_blocked",
+      "lineno": 122,
+      "outcome": "passed",
+      "keywords": [
+        "test_compliant_s3_public_access_blocked",
+        "TestCISBenchmarkCompliantFixtures",
+        "test_iac004_cis_benchmark.py",
+        "iac004",
+        "tests",
+        "Security_Test",
+        ""
+      ],
+      "setup": {
+        "duration": 0.0007371000247076154,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.0009281999664381146,
+        "outcome": "passed"
+      },
+      "teardown": {
+        "duration": 0.0007657000096514821,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_iac004_cis_benchmark.py::TestCISBenchmarkCompliantFixtures::test_compliant_dir_higher_cis_score_than_violations",
+      "lineno": 131,
+      "outcome": "failed",
+      "keywords": [
+        "test_compliant_dir_higher_cis_score_than_violations",
+        "TestCISBenchmarkCompliantFixtures",
+        "test_iac004_cis_benchmark.py",
+        "iac004",
+        "tests",
+        "Security_Test",
+        ""
+      ],
+      "setup": {
+        "duration": 0.0008312000427395105,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.0018822999554686248,
+        "outcome": "failed",
+        "crash": {
+          "path": "D:\\Security_Test\\tests\\test_iac004_cis_benchmark.py",
+          "lineno": 147,
+          "message": "AssertionError: Expected compliant (0.0%) > violations (0.0%)\nassert 0.0 > 0.0"
+        },
+        "traceback": [
+          {
+            "path": "tests\\test_iac004_cis_benchmark.py",
+            "lineno": 147,
+            "message": "in test_compliant_dir_higher_cis_score_than_violations"
+          }
+        ],
+        "stdout": "\nCIS pass-rate \u2014 compliant: 0.0%  violations: 0.0%\n",
+        "longrepr": "tests\\test_iac004_cis_benchmark.py:147: in test_compliant_dir_higher_cis_score_than_violations\n    assert comp_pct > viol_pct, (\nE   AssertionError: Expected compliant (0.0%) > violations (0.0%)\nE   assert 0.0 > 0.0"
+      },
+      "teardown": {
+        "duration": 0.0006205000099726021,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_iac004_cis_benchmark.py::TestCISBenchmarkCompliantFixtures::test_compliant_dir_cis_score_report",
+      "lineno": 150,
+      "outcome": "passed",
+      "keywords": [
+        "test_compliant_dir_cis_score_report",
+        "TestCISBenchmarkCompliantFixtures",
+        "test_iac004_cis_benchmark.py",
+        "iac004",
+        "tests",
+        "Security_Test",
+        ""
+      ],
+      "setup": {
+        "duration": 0.001072899962309748,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.0014331000274978578,
+        "outcome": "passed",
+        "stdout": "\nCompliant dir \u2014 passed: 0/0  (0.0%)\nIAC-004 score (compliant): {'metric': 'IAC-004 CIS Benchmark Compliance', 'raw': {'Passing': 0, 'Total': 1, 'CIS_Compliance_Pct': 0.0}, 'normalized_0_100': 0.0, 'gate_percent': 95.0, 'pass_gate': False}\n"
+      },
+      "teardown": {
+        "duration": 0.0009160999907180667,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_iac004_cis_benchmark.py::TestCISBenchmarkSummary::test_spot_check_coverage",
+      "lineno": 169,
+      "outcome": "failed",
+      "keywords": [
+        "test_spot_check_coverage",
+        "TestCISBenchmarkSummary",
+        "test_iac004_cis_benchmark.py",
+        "iac004",
+        "tests",
+        "Security_Test",
+        ""
+      ],
+      "setup": {
+        "duration": 0.0006850000354461372,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.0008581000147387385,
+        "outcome": "failed",
+        "crash": {
+          "path": "D:\\Security_Test\\tests\\test_iac004_cis_benchmark.py",
+          "lineno": 183,
+          "message": "AssertionError: These CIS spot-check IDs were not evaluated by Checkov: {'CKV_AWS_54', 'CKV_AWS_17', 'CKV_AWS_55', 'CKV_AWS_53', 'CKV_AWS_19', 'CKV_AWS_56', 'CKV_AWS_25'}\n  Check that the fixture files are valid Terraform.\nassert not {'CKV_AWS_54', 'CKV_AWS_17', 'CKV_AWS_55', 'CKV_AWS_53', 'CKV_AWS_19', 'CKV_AWS_56', 'CKV_AWS_25'}"
+        },
+        "traceback": [
+          {
+            "path": "tests\\test_iac004_cis_benchmark.py",
+            "lineno": 183,
+            "message": "in test_spot_check_coverage"
+          }
+        ],
+        "longrepr": "tests\\test_iac004_cis_benchmark.py:183: in test_spot_check_coverage\n    assert not missing, (\nE   AssertionError: These CIS spot-check IDs were not evaluated by Checkov: {'CKV_AWS_54', 'CKV_AWS_17', 'CKV_AWS_55', 'CKV_AWS_53', 'CKV_AWS_19', 'CKV_AWS_56', 'CKV_AWS_25'}\nE     Check that the fixture files are valid Terraform.\nE   assert not {'CKV_AWS_54', 'CKV_AWS_17', 'CKV_AWS_55', 'CKV_AWS_53', 'CKV_AWS_19', 'CKV_AWS_56', 'CKV_AWS_25'}"
+      },
+      "teardown": {
+        "duration": 0.0006512000109069049,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_iac004_cis_benchmark.py::TestCISBenchmarkSummary::test_full_iac_cis_report",
+      "lineno": 187,
+      "outcome": "passed",
+      "keywords": [
+        "test_full_iac_cis_report",
+        "TestCISBenchmarkSummary",
+        "test_iac004_cis_benchmark.py",
+        "iac004",
+        "tests",
+        "Security_Test",
+        ""
+      ],
+      "setup": {
+        "duration": 0.000458099995739758,
+        "outcome": "passed"
+      },
+      "call": {
+        "duration": 0.0010718000121414661,
+        "outcome": "passed",
+        "stdout": "\n============================================================\nIAC-004  CIS Benchmark \u2014 Whitebox Posture Summary\n============================================================\n  Violations dir:    0/  0 checks passed  (   0.0%)\n  Compliant dir:     0/  0 checks passed  (   0.0%)\n\n  Score (violations dir):  0.0/100  gate=FAIL\n  Score (compliant dir):   0.0/100  gate=FAIL\n============================================================\n"
+      },
+      "teardown": {
+        "duration": 0.0017738000024110079,
+        "outcome": "passed"
+      }
+    }
+  ]
+}
