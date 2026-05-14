@@ -1,0 +1,117 @@
+name: Whitebox security metrics
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  gitleaks:
+    name: SEC-001 — Gitleaks (repo gate)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  gitleaks-benchmark:
+    name: SEC-001 — Benchmark calibration (expects findings)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install gitleaks
+        env:
+          GITLEAKS_VERSION: 8.22.1
+        run: |
+          set -eux
+          curl -sSL "https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz" -o gitleaks.tgz
+          tar -xzf gitleaks.tgz gitleaks
+          sudo mv gitleaks /usr/local/bin/gitleaks
+          gitleaks version
+      - name: Detect synthetic leaks (non-zero exit is expected)
+        id: cal
+        run: |
+          set +e
+          gitleaks detect --source benchmarks/secrets --no-git --config .gitleaks-calibration.toml --report-format json --report-path gitleaks-bench.json -v
+          ec=$?
+          set -e
+          if [ ! -f gitleaks-bench.json ]; then
+            echo "No report produced"
+            exit 1
+          fi
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          raw = Path("gitleaks-bench.json").read_text(encoding="utf-8").strip()
+          if not raw:
+              raise SystemExit("Empty gitleaks report")
+          # gitleaks may emit one JSON array or NDJSON lines
+          if raw.startswith("["):
+              data = json.loads(raw)
+              n = len(data) if isinstance(data, list) else 0
+          else:
+              lines = [ln for ln in raw.splitlines() if ln.strip()]
+              n = 0
+              for ln in lines:
+                  row = json.loads(ln)
+                  if isinstance(row, list):
+                      n += len(row)
+                  elif isinstance(row, dict):
+                      findings = row.get("Secrets") or row.get("findings") or []
+                      n += len(findings) if isinstance(findings, list) else 1
+          print(f"benchmark_findings={n}")
+          if n < 1:
+              raise SystemExit("Expected >= 1 gitleaks finding in benchmarks/secrets — tune synthetic patterns for your gitleaks version.")
+          PY
+          if [ "$ec" -eq 0 ]; then
+            echo "Expected gitleaks to exit non-zero when benchmarks contain leaks."
+            exit 1
+          fi
+
+  checkov:
+    name: IAC metrics — Checkov (compliant + violations)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install Checkov
+        run: pip install "checkov~=3.2"
+      - name: Scan compliant baseline
+        run: |
+          checkov -d iac/compliant --framework terraform -o cli --compact --soft-fail
+      - name: Scan intentional violations (artifact for metrics)
+        run: |
+          set +e
+          checkov -d benchmarks/iac/violations --framework terraform -o json --compact | tee checkov-violations.json
+          # violations are expected; this step always succeeds so metrics JSON is uploaded.
+          exit 0
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: checkov-violations-json
+          path: checkov-violations.json
+
+  trufflehog:
+    name: SEC-003 — Trufflehog (diff scan; excludes benchmark secrets path)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: TruffleHog
+        uses: trufflesecurity/trufflehog@main
+        with:
+          path: ./
+          base: ${{ github.event.pull_request.base.sha || github.event.before || github.event.repository.default_branch }}
+          head: ${{ github.event.pull_request.head.sha || github.sha }}
+          extra_args: --only-verified=false --exclude-paths=benchmarks/secrets

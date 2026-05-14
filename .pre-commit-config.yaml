@@ -1,0 +1,9 @@
+# Pre-commit hook for SEC-002 (Blocked Secret Commit Count) — local enforcement metric.
+# Install: pip install pre-commit && pre-commit install
+repos:
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v1.5.0
+    hooks:
+      - id: detect-secrets
+        args: ['--baseline', '.secrets.baseline']
+        exclude: ^benchmarks/secrets/

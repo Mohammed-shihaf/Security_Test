@@ -1,0 +1,6 @@
+title = "Gitleaks calibration (no benchmark allowlist)"
+
+[extend]
+useDefault = true
+
+# Intentionally no path allowlist — use only for targeted benchmark runs.

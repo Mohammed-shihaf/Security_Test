@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://security-test.local/schemas/order-submitted.v1.json",
+  "title": "OrderSubmitted",
+  "type": "object",
+  "required": ["event_type", "order_id", "user_id", "occurred_at"],
+  "properties": {
+    "event_type": { "const": "order.submitted.v1" },
+    "order_id": { "type": "string", "minLength": 1 },
+    "user_id": { "type": "string", "minLength": 1 },
+    "occurred_at": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": true
+}

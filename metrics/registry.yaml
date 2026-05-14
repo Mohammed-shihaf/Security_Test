@@ -1,0 +1,177 @@
+# Whitebox security metrics registry — maps L1–L5 definitions to tools and score formulas.
+# All metrics are static (no live application required).
+
+categories:
+  secret_credential_scanning:
+    metrics:
+      - id: SEC-001
+        l1: Security Testing
+        l2: Secret Detection
+        l3: Secret Scanning
+        l4: Hardcoded Secret Detection
+        l5: Secrets Exposed in Code Count
+        description: >-
+          Scans git history and source files for API keys, tokens, passwords, private keys, certificates.
+        primary_tool: Gitleaks
+        direct_metric: "count(findings where entropy > threshold OR secret_regex_patterns)"
+        validation: Static Repo Scan
+        requires_live_app: false
+        artifacts:
+          - Git history
+          - Source files (.env, configs, code)
+        raw_formula: "Secrets_Count = count(distinct secret patterns detected)"
+        expected_threshold: 0
+        normalization: "MAX(0, 100 - (Secrets_Count * 50))"
+        block_policy: "any finding may BLOCK per org policy"
+        execution_frequency: "Every commit / PR"
+        frameworks: [OWASP, PCI-DSS, SOC 2, GDPR]
+
+      - id: SEC-002
+        l1: Security Testing
+        l2: Secret Detection
+        l3: Secret Scanning
+        l4: Pre-Commit Secret Prevention
+        l5: Blocked Secret Commit Count
+        description: Counts secret commit attempts blocked by pre-commit hooks.
+        primary_tool: detect-secrets
+        direct_metric: "count(commit_attempts blocked by hook in period)"
+        validation: Static Pre-Commit Hook
+        requires_live_app: false
+        artifacts:
+          - Staged git files
+        raw_formula: "Block_Rate = (Blocked / (Blocked + Slipped_Through)) * 100"
+        expected_threshold: 100
+        normalization: "Score = Block_Rate (gate at 100%)"
+        execution_frequency: "Every commit / PR"
+        frameworks: [OWASP, PCI-DSS, SOC 2]
+
+      - id: SEC-003
+        l1: Security Testing
+        l2: Secret Detection
+        l3: Secret Scanning
+        l4: Secrets in Git History
+        l5: Historical Secret Exposure Count
+        description: Full git history scan for secrets removed from HEAD but still in history.
+        primary_tool: Trufflehog
+        direct_metric: "count(commits where secret matched AND not in HEAD)"
+        validation: Static Git History Scan
+        requires_live_app: false
+        artifacts:
+          - Full git commit history
+        raw_formula: "Historical_Exposure_Score = Count(Historical_Secrets) * 40"
+        expected_threshold: 0
+        normalization: "MAX(0, 100 - Historical_Exposure_Score)"
+        execution_frequency: Weekly
+        frameworks: [PCI-DSS, SOC 2, GDPR]
+
+  iac_security_scanning:
+    metrics:
+      - id: IAC-001
+        l1: Security Testing
+        l2: IaC Security
+        l3: IaC Scanning
+        l4: Open Security Group Rule Detection
+        l5: Open Firewall Rule Count
+        description: Terraform/CFN ingress open to 0.0.0.0/0 on sensitive ports (non-80/443).
+        primary_tools: [Checkov, tfsec]
+        direct_metric: "count(ingress_cidr == 0.0.0.0/0 AND port NOT IN [80,443])"
+        validation: Static IaC Scan
+        requires_live_app: false
+        artifacts: [.tf, .yaml, .json IaC]
+        raw_formula: "Firewall_Risk = Count(Open_Ports)*30 + Count(Wildcard_CIDRs)*15"
+        expected_threshold: 0
+        normalization: "MAX(0, 100 - Firewall_Risk)"
+        execution_frequency: "Every commit / PR"
+        frameworks: [PCI-DSS, SOC 2, OWASP]
+
+      - id: IAC-002
+        l1: Security Testing
+        l2: IaC Security
+        l3: IaC Scanning
+        l4: Unencrypted Storage Definition
+        l5: Unencrypted Storage Count
+        description: RDS/S3/EBS/GCS without encryption-at-rest in IaC.
+        primary_tools: [Checkov, tfsec]
+        direct_metric: "count(encryption_enabled == false OR storage_encrypted == false)"
+        validation: Static IaC Scan
+        requires_live_app: false
+        artifacts: [.tf, CloudFormation templates]
+        raw_formula: "Encryption_Deficit_Score = Count(Unencrypted_Resources)*25"
+        expected_threshold: 0
+        normalization: "MAX(0, 100 - Encryption_Deficit_Score)"
+        execution_frequency: "Every commit / PR"
+        frameworks: [PCI-DSS, SOC 2]
+
+      - id: IAC-003
+        l1: Security Testing
+        l2: IaC Security
+        l3: IaC Scanning
+        l4: Publicly Exposed Resource Detection
+        l5: Public Storage Bucket Count
+        description: S3/GCS buckets with public access in IaC.
+        primary_tools: [Checkov, KICS]
+        direct_metric: "count(public ACL OR block_public_access disabled)"
+        validation: Static IaC Scan
+        requires_live_app: false
+        artifacts: [.tf, CloudFormation templates]
+        raw_formula: "Public_Exposure_Score = Count(Public_Buckets)*40"
+        expected_threshold: 0
+        normalization: "MAX(0, 100 - Public_Exposure_Score)"
+        execution_frequency: "Every commit / PR"
+        frameworks: [PCI-DSS, GDPR, FERPA, COPPA, SOC 2]
+
+      - id: IAC-004
+        l1: Security Testing
+        l2: IaC Security
+        l3: IaC Scanning
+        l4: CIS Benchmark Compliance
+        l5: CIS Benchmark Violation Count
+        description: Share of IaC checks passing CIS-oriented rulesets.
+        primary_tool: Checkov
+        direct_metric: "passing_cis_checks / total_cis_checks * 100"
+        validation: Static IaC Scan
+        requires_live_app: false
+        artifacts: [All IaC files]
+        raw_formula: "CIS_Compliance_Pct = (Passing / Total) * 100"
+        expected_threshold: 95
+        normalization: "Score = CIS_Compliance_Pct (gate at 95%)"
+        execution_frequency: "Every commit / PR"
+        frameworks: [SOC 2, PCI-DSS]
+
+  soc2_change_control:
+    metrics:
+      - id: SOC-001
+        l1: Security Testing
+        l2: SOC 2 Compliance
+        l3: Change Management Testing
+        l4: Change Control Verification
+        l5: Unreviewed Change Count
+        description: Merges without required review approvals (CC8.1 evidence).
+        primary_tool: GitHub Branch Protection API
+        direct_metric: "count(merged PRs without required reviewers OR review bypassed)"
+        validation: Static Git Metadata Query
+        requires_live_app: false
+        artifacts: [GitHub PR / audit log]
+        raw_formula: "Bypass_Rate = (Unreviewed_Merges / Total_Merges) * 100"
+        expected_threshold: 0
+        normalization: "MAX(0, 100 - (Bypass_Rate * 20))"
+        execution_frequency: Daily
+        frameworks: [SOC 2]
+
+      - id: SOC-002
+        l1: Security Testing
+        l2: SOC 2 Compliance
+        l3: Access Control
+        l4: Privileged Access Audit
+        l5: Overprivileged Account Count
+        description: Collaborators or CI accounts with excessive admin/write access.
+        primary_tools: [GitHub API, GitLab API]
+        direct_metric: "count(collaborators admin/write beyond need)"
+        validation: Static API Metadata Query
+        requires_live_app: false
+        artifacts: [Repository collaborator permissions]
+        raw_formula: "Privilege_Score = Count(Overprivileged)*20"
+        expected_threshold: 0
+        normalization: "MAX(0, 100 - Privilege_Score)"
+        execution_frequency: Weekly
+        frameworks: [SOC 2]

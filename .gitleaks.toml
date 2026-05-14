@@ -1,0 +1,11 @@
+title = "Security_Test — gitleaks policy"
+
+[extend]
+# Use default ruleset; tune via allowlist for benchmark-only content.
+useDefault = true
+
+[allowlist]
+description = "Benchmark fixtures use synthetic patterns — exclude from production-style gate on full tree."
+paths = [
+  '''benchmarks\/secrets\/''',
+]
