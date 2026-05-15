@@ -22,6 +22,11 @@ categories:
         raw_formula: "Secrets_Count = count(distinct secret patterns detected)"
         expected_threshold: 0
         normalization: "MAX(0, 100 - (Secrets_Count * 50))"
+        lab_demo_threshold_normalized_pct: 50
+        lab_demo_interpretation: >-
+          Optional lab exercise: treat normalized score ≥ 50 as PASS (at most one counted finding with ×50 penalty),
+          yielding a two-scenario demo split (clean vs two findings) at 50% pass / 50% fail across scenarios.
+          Production policy typically remains Secrets_Count == 0.
         block_policy: "any finding may BLOCK per org policy"
         execution_frequency: "Every commit / PR"
         frameworks: [OWASP, PCI-DSS, SOC 2, GDPR]

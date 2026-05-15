@@ -4,6 +4,8 @@ Apply L5 normalization formulas from metrics/registry.yaml to raw counts / rates
 
 Usage:
   python scripts/normalize_metrics.py --secrets-count 2
+  python scripts/normalize_metrics.py --secrets-count 1 --sec001-pass-min 50
+  python scripts/normalize_metrics.py --demo-sec001-lab-split --json
   python scripts/normalize_metrics.py --historical-secrets 1 --open-sg 1 --public-buckets 1 --unencrypted 1
   python scripts/normalize_metrics.py --cis-pass 48 --cis-total 50
   python scripts/normalize_metrics.py --bypass-rate-percent 5 --overprivileged 2
@@ -21,13 +23,41 @@ def clamp_0_100(x: float) -> float:
     return max(0.0, min(100.0, x))
 
 
-def sec_001(secrets_count: int) -> dict[str, Any]:
+def sec_001(secrets_count: int, pass_min_normalized: float | None = None) -> dict[str, Any]:
     score = max(0.0, 100.0 - (secrets_count * 50))
-    return {
+    out: dict[str, Any] = {
         "metric": "SEC-001 Secrets Exposed in Code Count",
         "raw": {"Secrets_Count": secrets_count},
         "normalized_0_100": score,
-        "gate": "BLOCK if Secrets_Count > 0 (org policy)",
+        "gate_strict_org_policy": "BLOCK if Secrets_Count > 0 (typical production)",
+    }
+    if pass_min_normalized is not None:
+        out["lab_floor_normalized_pct"] = pass_min_normalized
+        out["pass_at_lab_floor"] = score >= pass_min_normalized
+    return out
+
+
+def demo_sec001_lab_split(pass_floor: float = 50.0) -> dict[str, Any]:
+    """Two fixed scenarios vs a normalized score floor: one passes, one fails (50/50 split)."""
+    scenarios = (("clean_repo", 0), ("two_distinct_findings", 2))
+    metrics: list[dict[str, Any]] = []
+    for name, count in scenarios:
+        score = max(0.0, 100.0 - (count * 50))
+        metrics.append(
+            {
+                "scenario": name,
+                "Secrets_Count": count,
+                "normalized_0_100": score,
+                "pass_at_lab_floor_pct": score >= pass_floor,
+            }
+        )
+    passed_n = sum(1 for m in metrics if m["pass_at_lab_floor_pct"])
+    return {
+        "lab_note": "Versus a normalized score floor (default 50): clean repo passes; "
+        "two findings score 0 and fail — lab pass rate across these scenarios is 50%.",
+        "pass_floor_normalized": pass_floor,
+        "metrics": metrics,
+        "lab_pass_rate_across_scenarios": passed_n / len(metrics),
     }
 
 
@@ -136,6 +166,18 @@ def soc_002(overprivileged: int) -> dict[str, Any]:
 def main() -> int:
     p = argparse.ArgumentParser(description="Normalize whitebox security metrics (0–100).")
     p.add_argument("--secrets-count", type=int, default=None)
+    p.add_argument(
+        "--sec001-pass-min",
+        type=float,
+        default=None,
+        metavar="PCT",
+        help="Lab-only: also emit pass_at_lab_floor if normalized SEC-001 score >= PCT (e.g. 50).",
+    )
+    p.add_argument(
+        "--demo-sec001-lab-split",
+        action="store_true",
+        help="Print clean vs two-finding scenarios; exactly half pass a 50%% score floor by default.",
+    )
     p.add_argument("--historical-secrets", type=int, default=None)
     p.add_argument("--open-sg", type=int, default=0, help="Open sensitive ports count (non-80/443)")
     p.add_argument("--wildcard-cidr", type=int, default=0)
@@ -150,10 +192,17 @@ def main() -> int:
     p.add_argument("--json", action="store_true", help="Print single JSON object")
 
     args = p.parse_args()
+
+    if args.demo_sec001_lab_split:
+        floor = 50.0 if args.sec001_pass_min is None else args.sec001_pass_min
+        payload = demo_sec001_lab_split(floor)
+        print(json.dumps(payload, indent=2))
+        return 0
+
     results: list[dict[str, Any]] = []
 
     if args.secrets_count is not None:
-        results.append(sec_001(args.secrets_count))
+        results.append(sec_001(args.secrets_count, args.sec001_pass_min))
     if args.historical_secrets is not None:
         results.append(sec_003(args.historical_secrets))
     if args.open_sg or args.wildcard_cidr:

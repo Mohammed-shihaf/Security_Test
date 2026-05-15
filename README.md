@@ -26,7 +26,7 @@ This repository is a **deliberately small lab** for measuring static (no running
 
 Secrets / credentials
 
-- **SEC-001** — Gitleaks — *Secrets Exposed in Code Count* — `MAX(0, 100 − Secrets_Count×50)` — target **0** findings in production paths.
+- **SEC-001** — Gitleaks — *Secrets Exposed in Code Count* — `MAX(0, 100 − Secrets_Count×50)` — target **0** findings under strict production policy. **Lab:** normalized score **≥ 50** treats **≤ 1** counted finding as “pass” at the floor; run `python scripts/normalize_metrics.py --demo-sec001-lab-split` for a **50 / 50** pass-vs-fail pair across scenarios (clean vs two findings).
 - **SEC-002** — detect-secrets (pre-commit) — *Blocked Secret Commit Count* — gate **100%** block rate; see `/.pre-commit-config.yaml` and `requirements-dev.txt`.
 - **SEC-003** — Trufflehog — *Historical Secret Exposure Count* — `MAX(0, 100 − Historical×40)` — CI excludes `benchmarks/secrets/` via `--exclude-paths` so synthetic fixtures do not pollute history metrics.
 
@@ -85,6 +85,8 @@ Public API is only the gateway (host port from `GATEWAY_PUBLIC_PORT`, default **
 
 ```powershell
 python scripts\normalize_metrics.py --secrets-count 0 --json
+python scripts\normalize_metrics.py --secrets-count 1 --sec001-pass-min 50 --json
+python scripts\normalize_metrics.py --demo-sec001-lab-split
 python scripts\normalize_metrics.py --open-sg 1 --wildcard-cidr 0 --public-buckets 1 --unencrypted 1 --json
 python scripts\normalize_metrics.py --cis-pass 48 --cis-total 50 --json
 ```
