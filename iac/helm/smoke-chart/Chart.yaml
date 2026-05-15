@@ -1,0 +1,6 @@
+apiVersion: v2
+name: smoke-chart
+description: Minimal Helm chart for whitebox IaC scanner coverage.
+type: application
+version: 0.1.0
+appVersion: "3.9"

@@ -1,0 +1,45 @@
+# Minimal compliant-ish workload for K8s-oriented IaC scanners (Checkov, KICS, etc.).
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: security-test-smoke
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: smoke-pause
+  namespace: security-test-smoke
+  labels:
+    app: smoke-pause
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: smoke-pause
+  template:
+    metadata:
+      labels:
+        app: smoke-pause
+    spec:
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: pause
+          image: registry.k8s.io/pause:3.9
+          imagePullPolicy: IfNotPresent
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+          resources:
+            limits:
+              cpu: "100m"
+              memory: "64Mi"
+            requests:
+              cpu: "50m"
+              memory: "32Mi"

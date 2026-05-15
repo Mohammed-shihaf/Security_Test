@@ -26,13 +26,21 @@ else
 fi
 
 echo
-echo "=== Checkov: intentional violations ==="
+echo "=== Checkov: IaC smoke bundles (K8s, CFN, Helm, Ansible, Bicep) ==="
 if command -v checkov >/dev/null 2>&1; then
-  checkov -d benchmarks/iac/violations --framework terraform -o cli --compact --soft-fail
+  checkov -d iac/kubernetes --framework kubernetes -o cli --compact --soft-fail
+  checkov -d iac/cloudformation --framework cloudformation -o cli --compact --soft-fail
+  checkov -d iac/helm/smoke-chart --framework helm -o cli --compact --soft-fail
+  checkov -d iac/ansible --framework ansible -o cli --compact --soft-fail
+  checkov -d iac/bicep --framework bicep -o cli --compact --soft-fail
 fi
 
 echo
-echo "=== TruffleHog (exclude benchmark secrets path) ==="
+echo "=== Checkov: Dockerfiles (services/) ==="
+if command -v checkov >/dev/null 2>&1; then
+  checkov -d services --framework dockerfile -o cli --compact --soft-fail
+fi
+
 if command -v trufflehog >/dev/null 2>&1; then
   trufflehog git "file://$ROOT" --only-verified=false --exclude-paths=benchmarks/secrets || true
 else

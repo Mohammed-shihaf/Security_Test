@@ -1,0 +1,10 @@
+spring:
+  main:
+    banner-mode: off
+  cache:
+    type: none
+
+logging:
+  level:
+    root: WARN
+    com.example.catalog: INFO

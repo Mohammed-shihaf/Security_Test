@@ -86,9 +86,19 @@ jobs:
           python-version: "3.12"
       - name: Install Checkov
         run: pip install "checkov~=3.2"
-      - name: Scan compliant baseline
+      - name: Scan compliant baseline (Terraform)
         run: |
           checkov -d iac/compliant --framework terraform -o cli --compact --soft-fail
+      - name: Scan IaC smoke bundles (multi-framework)
+        run: |
+          checkov -d iac/kubernetes --framework kubernetes -o cli --compact --soft-fail
+          checkov -d iac/cloudformation --framework cloudformation -o cli --compact --soft-fail
+          checkov -d iac/helm/smoke-chart --framework helm -o cli --compact --soft-fail
+          checkov -d iac/ansible --framework ansible -o cli --compact --soft-fail
+          checkov -d iac/bicep --framework bicep -o cli --compact --soft-fail
+      - name: Scan Dockerfiles (services)
+        run: |
+          checkov -d services --framework dockerfile -o cli --compact --soft-fail
       - name: Scan intentional violations (artifact for metrics)
         run: |
           set +e

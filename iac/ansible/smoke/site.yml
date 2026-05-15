@@ -1,0 +1,9 @@
+---
+# Lint-oriented Ansible smoke playbook (not executed by default CI).
+- name: Security_Test Ansible smoke — localhost ping only
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+    - name: Ping localhost
+      ansible.builtin.ping:

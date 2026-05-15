@@ -10,6 +10,12 @@ This repository is a **deliberately small lab** for measuring static (no running
 | `contracts/events/` | Lightweight JSON Schema stubs for cross-service event contracts. |
 | `app/` | Clean sample tree — **must stay free of real secrets** (production-style gate). |
 | `iac/compliant/` | Reference Terraform meant to pass most IaC checks (still tune for your org). |
+| `iac/kubernetes/smoke/` | Minimal Namespace + Deployment for Kubernetes/KICS-style scanners. |
+| `iac/cloudformation/smoke/` | Minimal private S3 stack for CloudFormation-capable tools. |
+| `iac/helm/smoke-chart/` | Minimal Helm chart (pause Deployment) for Helm-framework scans. |
+| `iac/ansible/smoke/` | Tiny Ansible playbook for Ansible-oriented IaC checks. |
+| `iac/bicep/smoke/` | Resource-group scoped storage module for Bicep/ARM scanners. |
+| `services/catalog-service/` | **Java (Maven)** stub (`pom.xml`) so JVM/language pillars are not empty. |
 | `benchmarks/secrets/` | Synthetic “leaks” for **detector calibration** only (allowlisted for the main Gitleaks gate — see below). |
 | `benchmarks/iac/violations/` | Intentional IaC issues (open SG, unencrypted RDS, public S3) for **IAC-001…003** tooling. |
 | `metrics/registry.yaml` | Machine-readable L1–L5 metric definitions, thresholds, and normalization formulas. |
@@ -54,6 +60,8 @@ If your Gitleaks version stops matching the synthetic file, edit `benchmarks/sec
 | `user-service` | Node 20 + Express | 8002 | In-memory user catalogue |
 | `order-service` | Python 3.12 + FastAPI | 8003 | Orders + calls **user** + **notification** on submit |
 | `notification-service` | Node 20 + Express | 8004 | In-process “queue” for outbound notifications |
+| `catalog-service` | Spring Boot 3 + JPA + Flyway + Security + OpenAPI | 8085 | JVM-rich harness (`pom.xml`, layered packages, tests) — **not** wired into `docker compose` |
+
 
 **Run the stack**
 
@@ -102,7 +110,7 @@ Workflow: [`.github/workflows/whitebox-metrics.yml`](.github/workflows/whitebox-
 
 - **Gitleaks** — production-style full tree (benchmark secrets path allowlisted).
 - **Gitleaks benchmark** — confirms detectors fire on `benchmarks/secrets/`.
-- **Checkov** — `iac/compliant` (soft-fail for developer ergonomics; remove `--soft-fail` when you want a hard gate) and JSON capture for violations.
+- **Checkov** — Terraform on `iac/compliant`; intentional violations JSON from `benchmarks/iac/violations`; plus Kubernetes, CloudFormation, Helm, Ansible, Bicep under `iac/`, and Dockerfiles under `services/` (soft-fail on compliant/smoke paths for developer ergonomics).
 - **Trufflehog** — diff-oriented scan with `benchmarks/secrets` excluded from paths.
 
 ## Compliance note

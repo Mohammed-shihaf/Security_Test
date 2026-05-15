@@ -32,6 +32,15 @@ if (Get-Command checkov -ErrorAction SilentlyContinue) {
     if (-not $BenchmarkIac -and -not $CompliantIac) {
         checkov -d . --framework terraform --skip-path benchmarks/secrets -o cli
     }
+
+    Write-Host "`n=== Checkov: IaC smoke bundles ===" 
+    checkov -d iac/kubernetes --framework kubernetes -o cli --compact --soft-fail
+    checkov -d iac/cloudformation --framework cloudformation -o cli --compact --soft-fail
+    checkov -d iac/helm/smoke-chart --framework helm -o cli --compact --soft-fail
+    checkov -d iac/ansible --framework ansible -o cli --compact --soft-fail
+    checkov -d iac/bicep --framework bicep -o cli --compact --soft-fail
+    Write-Host "`n=== Checkov: Dockerfiles (services/) ===" 
+    checkov -d services --framework dockerfile -o cli --compact --soft-fail
 } else {
     Write-Warning "checkov not in PATH (pip install checkov)"
 }
